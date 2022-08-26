@@ -1,0 +1,22 @@
+[
+  {
+    "fullName": "Juan Gabriel",
+    "song":"hasta que te conoci",
+    "link": "https://www.youtube.com/watch?v=ga5Bo4YdgH4"
+  },
+  {
+    "fullName": "Antonio Aguilar",
+    "song":"triste recuerdo",
+    "link": "https://www.youtube.com/watch?v=MwzB_sXBZPA"
+  },
+  {
+    "fullName": "Rocio Durcal",
+    "song":"asi son los hombres",
+    "link": "https://www.youtube.com/watch?v=gX3hwCKX8YY"
+  },
+  {
+    "fullName": "Juan Gabriel",
+    "song":"Me gustas mucho",
+    "link": "https://www.youtube.com/watch?v=DwMQblx5HPc"
+  }
+]

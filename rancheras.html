@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jose Alfredo Favorite rancheras</title>
+  <!-- load jquery to use for external json loading -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- load React - note when deploying, replace "development.js" with "production.min.js". -->
+  <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+  <!-- load babel transpiler to convert React's JSX markup to pure JavaScript
+       Note: we only need babel loaded in the browser if we are not using a build system 
+       where babel would save pure JS files to be loaded by the browser instead -->
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>I love rancheras</h1>
+  <h2>pass rancheras parameter to url to see my favorite rancheras</h2>
+
+  <!--the root element of react application-->
+  <div id="myApp">
+  </div>  
+
+  <!--custom script-->
+  <!--use babel-->
+  <script type="text/babel">
+    "use strict";
+
+    function RancherasList(props) {
+      console.log(props);
+      // return output for the component using JS
+      return  <ul>
+                  {
+                    // use map() to loop thru array
+                    props.list.map(
+                      // access array elements
+                      (item,index) => (
+                          <li key={index}>
+                              <a href={item.link}>
+                                {item.fullName} - {item.song}
+                              </a>
+                          </li>
+                      )        
+                    )
+                  }
+                 </ul>;
+    }
+
+    // use jQuery to load the JSON data from our server
+    $.getJSON(
+       'rancheras',  //url to request json rancheras file
+       function(jsonFromJquery) {
+    
+          // after JSON loaded, call react createRoot() to identify root HTML element for app
+          const myRoot = ReactDOM.createRoot( document.getElementById('myApp') );
+          // call react render() to output JSX component into existing element
+          myRoot.render(
+            <RancherasList list={jsonFromJquery} />
+          );
+       }
+    );
+    
+  </script>
+</body>
+</html>
